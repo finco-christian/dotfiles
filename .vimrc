@@ -33,18 +33,7 @@ set history=100
 set splitright                  " create a new split to the right when calling :new
 set splitbelow                  " same as above but for horizontal splits
 
-" If on mac vim bump the font size and set the font to monaco
-if has("gui_running")
-    set guifont=Monaco:h16
-    colorscheme inkpot
 
-else
-    let &t_8f = "\<Esc>[38;2;%lu;%lu;%lum"
-    let &t_8b = "\<Esc>[48;2;%lu;%lu;%lum"
-
-    colorscheme dracula
-    set termguicolors
-endif
 
 " ignore node_modules x DS_Store x git in ctrlp
 let g:ctrlp_custom_ignore = 'node_modules\|DS_Store\|git\|env\|__pycache__'
@@ -204,19 +193,6 @@ au BufNewFile,BufRead *.py
 " Remove whitespace on save
 autocmd BufWritePre * :%s/\s\+$//e
 
-" ** VUE JS SPECIFIC SETTINGS ** "
-" Set .vue syntax hightlighting to html
-" These are all copied from posva/vim-vue
-autocmd BufNewFile,BufRead *.vue setf vue.html.javascript.css
-
-" ft_plugin
-if exists("b:did_ftplugin")
-  finish
-endif
-
-runtime! ftplugin/html.vim
-
-" ** END OF VUE JS SPECIFIC SETTINGS ** "
 
 "define BadWhitespace before using in a match
 highlight BadWhitespace ctermbg=red guibg=#CD5C5C
